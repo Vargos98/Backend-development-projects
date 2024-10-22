@@ -29,22 +29,22 @@ const fs = require('fs');
 // console.log("First I'll be read")
 
 const http = require('http');
-const data = fs.readFileSync(`./dev-data/data.json`,'utf-8');
+const data = fs.readFileSync(`./dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data);
 
 
-var server = http.createServer((req,res)=>{
-  if(req.url === '/'){
+var server = http.createServer((req, res) => {
+  if (req.url === '/') {
     res.end("Home-page")
-  }else if(req.url === '/profile'){
+  } else if (req.url === '/profile') {
     res.end("profile-page");
   }
-    else if(req.url === '/api'){
-      res.writeHead(200,{'Content-type':'application/json'})
-        res.end(data);
-      
-    }
-  
+  else if (req.url === '/api') {
+    res.writeHead(200, { 'Content-type': 'application/json' })
+    res.end(data);
+
+  }
+
   else {
     res.writeHead(404);
     res.end("Page not found");
